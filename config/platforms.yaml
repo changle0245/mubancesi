@@ -1,0 +1,361 @@
+# 25个主流自媒体平台配置
+
+platforms:
+  # ========== 国内平台 ==========
+
+  # 微信生态
+  wechat_official:
+    name: "微信公众号"
+    name_en: "WeChat Official Account"
+    category: "图文"
+    max_length: 20000
+    title_length: 64
+    style: "正式、有深度、长文"
+    features:
+      - "支持富文本"
+      - "支持图片和视频"
+      - "重视标题和封面"
+    tips: "标题要有吸引力，内容要有价值，适合深度文章"
+
+  wechat_moments:
+    name: "微信朋友圈"
+    name_en: "WeChat Moments"
+    category: "短文本"
+    max_length: 1000
+    style: "生活化、分享感"
+    features:
+      - "最多9张图片"
+      - "支持话题标签"
+      - "适合个人分享"
+    tips: "前3行很重要，要引起点击展开的兴趣"
+
+  # 短视频平台
+  douyin:
+    name: "抖音"
+    name_en: "Douyin/TikTok China"
+    category: "短视频"
+    max_length: 55
+    title_length: 30
+    style: "简短、口语化、有节奏"
+    features:
+      - "15-60秒短视频"
+      - "需要视频脚本"
+      - "重视前3秒"
+      - "话题标签很重要"
+    tips: "开头3秒决定是否继续看，文案要配合视频节奏"
+
+  kuaishou:
+    name: "快手"
+    name_en: "Kuaishou"
+    category: "短视频"
+    max_length: 100
+    title_length: 30
+    style: "真实、接地气、生活化"
+    features:
+      - "支持长视频"
+      - "重视互动"
+      - "适合生活记录"
+    tips: "展现真实生活，更注重人情味和互动"
+
+  # 图文平台
+  xiaohongshu:
+    name: "小红书"
+    name_en: "Xiaohongshu/RED"
+    category: "图文"
+    max_length: 1000
+    title_length: 20
+    style: "轻松、分享感、干货"
+    features:
+      - "最多9张图片"
+      - "话题标签和emoji很重要"
+      - "适合种草和分享"
+    tips: "标题要有吸引力，多用emoji，图片要精美"
+
+  weibo:
+    name: "微博"
+    name_en: "Weibo"
+    category: "短文本"
+    max_length: 140
+    extended_max: 2000
+    title_length: 30
+    style: "简洁、热点、实时"
+    features:
+      - "话题标签很重要"
+      - "支持长微博"
+      - "适合热点讨论"
+    tips: "抓住热点，使用话题标签增加曝光"
+
+  zhihu:
+    name: "知乎"
+    name_en: "Zhihu"
+    category: "图文"
+    max_length: 50000
+    title_length: 50
+    style: "专业、有深度、逻辑清晰"
+    features:
+      - "支持长文"
+      - "重视专业性"
+      - "适合知识分享"
+    tips: "内容要专业、有深度，逻辑清晰，可以很长"
+
+  toutiao:
+    name: "今日头条"
+    name_en: "Toutiao"
+    category: "图文"
+    max_length: 10000
+    title_length: 30
+    style: "资讯化、标题党"
+    features:
+      - "推荐算法强"
+      - "标题很重要"
+      - "适合资讯类内容"
+    tips: "标题要吸引人，内容要有价值，适合资讯和观点"
+
+  bilibili:
+    name: "哔哩哔哩"
+    name_en: "Bilibili"
+    category: "视频"
+    max_length: 2000
+    title_length: 80
+    style: "年轻化、有梗、有趣"
+    features:
+      - "视频为主"
+      - "弹幕文化"
+      - "适合知识、娱乐、生活"
+    tips: "标题和封面很重要，内容要有趣或有价值"
+
+  baijiahao:
+    name: "百家号"
+    name_en: "Baijiahao"
+    category: "图文"
+    max_length: 10000
+    title_length: 30
+    style: "资讯化、正规"
+    features:
+      - "百度生态"
+      - "SEO友好"
+      - "适合资讯类"
+    tips: "标题优化很重要，内容要正规、有价值"
+
+  xigua:
+    name: "西瓜视频"
+    name_en: "Xigua Video"
+    category: "视频"
+    max_length: 1000
+    title_length: 30
+    style: "中视频、知识类"
+    features:
+      - "1-30分钟中视频"
+      - "适合知识分享"
+      - "字节跳动生态"
+    tips: "适合做知识科普、生活记录等中视频内容"
+
+  qutoutiao:
+    name: "趣头条"
+    name_en: "Qutoutiao"
+    category: "图文"
+    max_length: 5000
+    title_length: 30
+    style: "下沉市场、生活化"
+    features:
+      - "适合生活资讯"
+      - "下沉市场"
+    tips: "内容要接地气，贴近生活"
+
+  # ========== 国外平台 ==========
+
+  twitter:
+    name: "Twitter/X"
+    name_en: "Twitter/X"
+    category: "短文本"
+    max_length: 280
+    extended_max: 4000
+    style: "简洁、实时、观点"
+    features:
+      - "280字符限制"
+      - "支持长推文"
+      - "话题标签重要"
+    tips: "简洁有力，抓住热点，善用话题标签"
+
+  facebook:
+    name: "Facebook"
+    name_en: "Facebook"
+    category: "图文"
+    max_length: 63206
+    style: "生活化、社交"
+    features:
+      - "支持各种格式"
+      - "重视互动"
+      - "适合社交分享"
+    tips: "前几行要吸引人，因为会被折叠"
+
+  instagram:
+    name: "Instagram"
+    name_en: "Instagram"
+    category: "图片"
+    max_length: 2200
+    title_length: 30
+    style: "视觉化、精美、故事感"
+    features:
+      - "图片为主"
+      - "最多10张图片"
+      - "话题标签很重要"
+    tips: "图片质量最重要，文案要配合图片讲故事"
+
+  tiktok:
+    name: "TikTok"
+    name_en: "TikTok International"
+    category: "短视频"
+    max_length: 150
+    title_length: 100
+    style: "有趣、创意、节奏快"
+    features:
+      - "15-60秒视频"
+      - "音乐很重要"
+      - "创意为王"
+    tips: "前3秒最关键，要有创意和节奏感"
+
+  youtube:
+    name: "YouTube"
+    name_en: "YouTube"
+    category: "视频"
+    max_length: 5000
+    title_length: 100
+    style: "长视频、知识、娱乐"
+    features:
+      - "长视频为主"
+      - "标题和缩略图重要"
+      - "适合深度内容"
+    tips: "标题和缩略图决定点击率，内容要有价值"
+
+  linkedin:
+    name: "LinkedIn"
+    name_en: "LinkedIn"
+    category: "图文"
+    max_length: 3000
+    style: "专业、职场、行业"
+    features:
+      - "职场社交"
+      - "专业性强"
+      - "适合行业见解"
+    tips: "内容要专业，展现行业洞察和个人品牌"
+
+  pinterest:
+    name: "Pinterest"
+    name_en: "Pinterest"
+    category: "图片"
+    max_length: 500
+    title_length: 100
+    style: "视觉化、灵感、收藏"
+    features:
+      - "图片为主"
+      - "适合视觉内容"
+      - "强调灵感和收藏"
+    tips: "图片质量要高，要有视觉冲击力和灵感性"
+
+  reddit:
+    name: "Reddit"
+    name_en: "Reddit"
+    category: "图文"
+    max_length: 40000
+    title_length: 300
+    style: "社区化、讨论、深度"
+    features:
+      - "社区文化强"
+      - "适合深度讨论"
+      - "重视原创和质量"
+    tips: "要了解社区文化，内容要有价值和讨论性"
+
+  medium:
+    name: "Medium"
+    name_en: "Medium"
+    category: "图文"
+    max_length: 100000
+    style: "专业、深度、博客"
+    features:
+      - "长文章平台"
+      - "适合深度内容"
+      - "专业写作"
+    tips: "适合写深度文章和专业博客"
+
+  quora:
+    name: "Quora"
+    name_en: "Quora"
+    category: "问答"
+    max_length: 20000
+    style: "专业、知识、问答"
+    features:
+      - "问答平台"
+      - "重视专业性"
+      - "适合知识分享"
+    tips: "回答要专业、详细、有价值"
+
+  telegram:
+    name: "Telegram"
+    name_en: "Telegram"
+    category: "消息"
+    max_length: 4096
+    style: "即时、社群、自由"
+    features:
+      - "即时通讯"
+      - "支持频道和群组"
+      - "无审查"
+    tips: "适合社群运营和即时分享"
+
+  discord:
+    name: "Discord"
+    name_en: "Discord"
+    category: "消息"
+    max_length: 2000
+    style: "社群、实时、互动"
+    features:
+      - "社群平台"
+      - "实时聊天"
+      - "适合社群运营"
+    tips: "适合建立和运营垂直社群"
+
+  threads:
+    name: "Threads"
+    name_en: "Threads"
+    category: "短文本"
+    max_length: 500
+    style: "简洁、社交、对话"
+    features:
+      - "Meta旗下"
+      - "类似Twitter"
+      - "重视对话"
+    tips: "简洁表达，鼓励对话和互动"
+
+# 平台分类
+categories:
+  short_text:
+    name: "短文本"
+    platforms: ["wechat_moments", "weibo", "twitter", "threads"]
+
+  long_text:
+    name: "长文本"
+    platforms: ["wechat_official", "zhihu", "toutiao", "baijiahao", "medium", "linkedin"]
+
+  image_text:
+    name: "图文"
+    platforms: ["xiaohongshu", "instagram", "pinterest"]
+
+  short_video:
+    name: "短视频"
+    platforms: ["douyin", "kuaishou", "tiktok"]
+
+  long_video:
+    name: "长视频"
+    platforms: ["bilibili", "youtube", "xigua"]
+
+  social:
+    name: "社交媒体"
+    platforms: ["facebook", "twitter", "instagram", "threads"]
+
+  professional:
+    name: "专业平台"
+    platforms: ["linkedin", "zhihu", "medium", "quora"]
+
+  community:
+    name: "社区平台"
+    platforms: ["reddit", "telegram", "discord"]

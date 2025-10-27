@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>慕班策思 - 热点内容生成系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-fire"></i>
+                <span>慕班策思</span>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-item" onclick="showPage('dashboard')">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </button>
+                <button class="nav-item" onclick="showPage('chat')">
+                    <i class="fas fa-comments"></i>
+                    <span>AI对话</span>
+                </button>
+                <button class="nav-item" onclick="showPage('generate')">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <span>生成内容</span>
+                </button>
+                <button class="nav-item" onclick="showPage('history')">
+                    <i class="fas fa-history"></i>
+                    <span>历史记录</span>
+                </button>
+                <button class="nav-item" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>退出</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container" id="mainContainer">
+        <!-- 登录页面 -->
+        <div class="page active" id="loginPage">
+            <div class="auth-container">
+                <div class="auth-box">
+                    <h1><i class="fas fa-fire"></i> 慕班策思</h1>
+                    <p class="subtitle">热点内容生成系统</p>
+
+                    <div class="tabs">
+                        <button class="tab active" onclick="switchAuthTab('login')">登录</button>
+                        <button class="tab" onclick="switchAuthTab('register')">注册</button>
+                    </div>
+
+                    <!-- 登录表单 -->
+                    <form id="loginForm" class="auth-form">
+                        <div class="form-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="loginUsername" placeholder="用户名" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="密码" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> 登录
+                        </button>
+                    </form>
+
+                    <!-- 注册表单 -->
+                    <form id="registerForm" class="auth-form" style="display: none;">
+                        <div class="form-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="registerUsername" placeholder="用户名（3-50字符）" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="registerEmail" placeholder="邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registerPassword" placeholder="密码（至少6位）" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> 注册
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 首页 -->
+        <div class="page" id="dashboardPage">
+            <div class="page-header">
+                <h2><i class="fas fa-home"></i> 欢迎回来</h2>
+                <p>开始你的内容创作之旅</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card" onclick="showPage('chat')">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>AI对话</h3>
+                    <p>与AI互动，创建你的内容结构模板</p>
+                </div>
+
+                <div class="dashboard-card" onclick="showPage('generate')">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>生成内容</h3>
+                    <p>基于热点素材，生成优质内容</p>
+                </div>
+
+                <div class="dashboard-card" onclick="showPage('history')">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>历史记录</h3>
+                    <p>查看最近30天的生成记录</p>
+                </div>
+
+                <div class="dashboard-card" onclick="loadStructures()">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>我的模板</h3>
+                    <p>管理你的内容结构模板</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI对话页面 -->
+        <div class="page" id="chatPage">
+            <div class="page-header">
+                <h2><i class="fas fa-comments"></i> AI对话 - 创建内容结构</h2>
+                <p>与AI互动，定制你的内容结构模板</p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message assistant">
+                        <div class="message-content">
+                            <p>你好！我是你的内容结构设计助手。</p>
+                            <p>请告诉我，你想创建什么样的内容结构？比如：</p>
+                            <ul>
+                                <li>你要创作什么类型的内容？（教程、故事、产品介绍等）</li>
+                                <li>希望包含哪些部分？</li>
+                                <li>每个部分的长度要求？</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <select id="chatModel" class="model-select">
+                        <option value="openai">OpenAI GPT-4</option>
+                        <option value="deepseek">DeepSeek V3</option>
+                    </select>
+                    <textarea id="chatInput" placeholder="输入你的消息..." rows="1"></textarea>
+                    <button id="sendBtn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 内容生成页面 -->
+        <div class="page" id="generatePage">
+            <div class="page-header">
+                <h2><i class="fas fa-wand-magic-sparkles"></i> 内容生成</h2>
+                <p>输入关键词，搜索热点并生成内容</p>
+            </div>
+
+            <div class="generate-container">
+                <div class="generate-form">
+                    <div class="form-section">
+                        <label><i class="fas fa-search"></i> 搜索关键词</label>
+                        <input type="text" id="generateKeyword" placeholder="输入关键词，如：人工智能、健康饮食">
+                        <button class="btn btn-secondary" onclick="searchHotTopics()">
+                            <i class="fas fa-fire"></i> 搜索热点
+                        </button>
+                    </div>
+
+                    <div class="form-section">
+                        <label><i class="fas fa-layer-group"></i> 选择内容结构</label>
+                        <select id="structureSelect">
+                            <option value="">加载中...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-section">
+                        <label><i class="fas fa-globe"></i> 目标平台（多选）</label>
+                        <div id="platformSelector" class="platform-selector">
+                            <label><input type="checkbox" value="wechat_official" checked> 微信公众号</label>
+                            <label><input type="checkbox" value="xiaohongshu" checked> 小红书</label>
+                            <label><input type="checkbox" value="douyin" checked> 抖音</label>
+                            <label><input type="checkbox" value="weibo"> 微博</label>
+                            <label><input type="checkbox" value="zhihu"> 知乎</label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <label><i class="fas fa-robot"></i> AI模型</label>
+                        <select id="generateModel">
+                            <option value="openai">OpenAI GPT-4</option>
+                            <option value="deepseek">DeepSeek V3</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary btn-large" onclick="generateContent()">
+                        <i class="fas fa-wand-magic-sparkles"></i> 生成内容
+                    </button>
+                </div>
+
+                <div id="hotTopicsResult" class="hot-topics-result" style="display: none;">
+                    <h3><i class="fas fa-fire"></i> 搜索到的热点</h3>
+                    <div id="hotTopicsList"></div>
+                </div>
+
+                <div id="generateResult" class="generate-result" style="display: none;">
+                    <h3><i class="fas fa-check-circle"></i> 生成结果</h3>
+                    <div id="generatedContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史记录页面 -->
+        <div class="page" id="historyPage">
+            <div class="page-header">
+                <h2><i class="fas fa-history"></i> 历史记录</h2>
+                <p>最近30天的生成记录</p>
+            </div>
+
+            <div class="history-container">
+                <div id="historyList" class="history-list">
+                    <!-- 历史记录将动态加载 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载提示 -->
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>处理中...</p>
+    </div>
+
+    <!-- Toast通知 -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
