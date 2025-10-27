@@ -1,0 +1,86 @@
+# 提示词模板配置
+# 用户可以根据自己的需求调整这些模板
+
+# 内容结构模板
+content_structure:
+  title: "标题：{title}"
+  hook: "开场钩子：{hook}"
+  main_content: "主要内容：{main_content}"
+  call_to_action: "行动号召：{cta}"
+  hashtags: "话题标签：{hashtags}"
+
+# 内容改写提示词
+rewrite_prompt: |
+  你是一个专业的内容创作者。请根据以下热点素材，创作一篇符合固定结构的多平台分发内容。
+
+  热点素材：
+  {hot_materials}
+
+  用户认可的内容风格参考：
+  {approved_style}
+
+  请按照以下结构输出内容：
+  1. 标题：吸引人的标题（15-30字）
+  2. 开场钩子：引起读者兴趣的开场（50字以内）
+  3. 主要内容：核心内容，结构清晰（300-500字）
+  4. 行动号召：引导读者互动或行动（30字以内）
+  5. 话题标签：3-5个相关标签
+
+  要求：
+  - 保持用户认可的内容风格和语言习惯
+  - 内容要有价值，不要空洞
+  - 适合多平台分发（微信公众号、小红书、抖音等）
+  - 语言通俗易懂，有亲和力
+
+# 风格学习提示词
+style_learning_prompt: |
+  请分析以下用户认可的内容，总结其写作风格特点：
+
+  {approved_contents}
+
+  请从以下维度分析：
+  1. 语言风格（正式/轻松/幽默等）
+  2. 句式特点（长句/短句、排比、设问等）
+  3. 用词习惯（专业术语/口语化等）
+  4. 内容结构偏好
+  5. 互动方式（提问/号召等）
+
+  请总结成一个风格指南，用于指导后续内容创作。
+
+# 热点分析提示词
+hot_analysis_prompt: |
+  请分析以下热点素材，提取关键信息：
+
+  {materials}
+
+  请提取：
+  1. 核心话题和关键词
+  2. 热点原因和背景
+  3. 用户关注点
+  4. 可延伸的角度
+  5. 情感倾向
+
+# 平台适配
+platforms:
+  wechat:
+    name: "微信公众号"
+    max_length: 2000
+    style: "正式、有深度"
+
+  xiaohongshu:
+    name: "小红书"
+    max_length: 1000
+    style: "轻松、分享感"
+    emoji: true
+
+  douyin:
+    name: "抖音"
+    max_length: 500
+    style: "简短、口语化"
+    video_script: true
+
+  weibo:
+    name: "微博"
+    max_length: 300
+    style: "简洁、热点"
+    hashtag_important: true

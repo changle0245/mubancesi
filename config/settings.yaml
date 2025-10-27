@@ -1,0 +1,64 @@
+# 系统配置文件
+
+# API配置（使用时需要配置环境变量）
+api:
+  # OpenAI配置
+  openai:
+    model: "gpt-4-turbo-preview"
+    temperature: 0.7
+    max_tokens: 2000
+
+  # Anthropic配置（Claude）
+  anthropic:
+    model: "claude-3-sonnet-20240229"
+    temperature: 0.7
+    max_tokens: 2000
+
+# 搜索配置
+search:
+  # 支持的搜索源
+  sources:
+    - weibo        # 微博热搜
+    - baidu        # 百度热搜
+    - zhihu        # 知乎热榜
+    - douyin       # 抖音热点
+
+  # 搜索结果数量
+  max_results: 10
+
+  # 缓存时间（分钟）
+  cache_duration: 30
+
+# 内容配置
+content:
+  # 默认字数范围
+  word_count:
+    min: 300
+    max: 500
+
+  # 标题长度
+  title_length:
+    min: 15
+    max: 30
+
+  # 话题标签数量
+  hashtag_count: 5
+
+# 数据存储
+storage:
+  # 热点数据缓存目录
+  cache_dir: "data/cache"
+
+  # 用户认可内容目录
+  approved_dir: "data/approved_content"
+
+  # 生成内容输出目录
+  output_dir: "data/output"
+
+# 风格学习
+style_learning:
+  # 最少需要的样本数量
+  min_samples: 3
+
+  # 风格配置文件
+  style_config: "data/user_style.json"
